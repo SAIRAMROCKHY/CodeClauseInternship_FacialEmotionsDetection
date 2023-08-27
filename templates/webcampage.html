@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Emotion | Webcam</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../static/webcampage.css">
+</head>
+<body>
+    <div class="hero">
+        <div id="blob"></div>
+        <div id="blur"></div>
+        <div class="container">
+            <div class="heading-div">
+                <div class="heading-container">
+                    <h2 class="heading">FACIAL EMOTION RECOGNIZER</h2>
+                </div>
+            </div>
+            <div class="main-webcam-div">
+                <p class="captured-image-heading" style="display: {{htmlManipulationMap["capturedImageHeading"]}}">Captured Image</p>
+                <div class="previews-div">
+                    <video id="webcam" autoplay></video>
+                    <canvas id="snapshot-canvas"></canvas>
+                    <img src={{htmlManipulationMap["faceImageSource"]}} id="image-id" style="display: {{htmlManipulationMap["capturedFaceDisplay"]}}; z-index: 10">
+                </div>
+                <div class="btns-div">
+                    <div class="snapshot-operations">
+                        <button id="snapshot">Capture Image</button>
+                        <button id="snapshot-again">Capture Again</button>
+                    </div>
+                    <div class="webcam-operations">
+                        <button id="start-webcam" style="display: {{htmlManipulationMap["startBtnDisplay"]}}">Start webcam</button>
+                        <button id="stop-webcam">Stop webcam</button>
+                    </div>
+                    <form action="/predict-webcam" method="post">
+                        <input type="submit" id="predict-btn" value="PredictFromWebcam">
+                    </form>
+                </div>
+            </div>
+            <div class="output-div">
+                <p class="output-text">{{htmlManipulationMap["predictedOutput"]}}</p>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='webcampage.js') }}"></script>
+</body>
+</html>

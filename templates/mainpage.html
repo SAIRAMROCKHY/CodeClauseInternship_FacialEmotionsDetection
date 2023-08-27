@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Emotion Recognizor</title>
+    <link rel="stylesheet" href="../static/mainpage.css">
+</head>
+<body>
+    <div class="hero">
+        <div id="blob"></div>
+        <div id="blur"></div>
+        <div class="container">
+            <div class="heading-div">
+                <div class="heading-container">
+                    <h2 class="heading">FACIAL EMOTION RECOGNIZER</h2>
+                </div>
+            </div>
+            <div class="main-selection-div">
+                <div class="input-field-div" style="display: {{htmlManipulationMap["inputFieldDisplay"]}}">
+                    <button class="choose-btn">Choose File</button>
+                    <p class="file-name-text">No File Chosen</p>
+                    <form name="myfrom" onsubmit="return predictClick()" action="/predict" method="post" enctype="multipart/form-data">
+                        <input type="file" name="input-face" id="image-ip">
+                        <input type="submit" id="predict-btn" value="Predict">
+                    </form>
+                </div>
+                <div class="image-display-div" style="display: {{htmlManipulationMap["imageDivDisplay"]}}">
+                    <div class="image-heading-div" style="display: {{htmlManipulationMap["imageHeadingDisplay"]}}">
+                        <h2 class="image-heading">Selected Image:</h2>
+                    </div>
+                    <img src={{htmlManipulationMap["imageSource"]}} alt="Input Image" id="image-id">
+                </div>
+            </div>
+            <div class="output-div">
+                <!-- <a href="/webcampage">Webcam Page</a> -->
+                <p class="output-text">{{htmlManipulationMap["predictedOutput"]}}</p>
+                <!-- <p class="output-text">Angry</p> -->
+            </div>
+        </div>
+    </div>
+    <script src="../static/mainpage.js"></script>
+</body>
+</html>
